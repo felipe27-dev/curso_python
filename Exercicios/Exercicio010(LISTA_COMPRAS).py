@@ -1,6 +1,5 @@
 import os
 import time
-import random    
 os.system('cls') or None
 print("-"*90)
 print(" "*35+"Lista de compras")
@@ -100,8 +99,13 @@ try:
             for indice,item in enumerate(lista_de_compras):
                 print(indice+1,"-",item)
             deletar_item = int(input("\nInsira o número do item para deletar: "))
+            if len(lista_de_compras) < deletar_item-1:
+                print("Não há nenhum item com este número")
+                time.sleep(2)
+                continue
+            item_deletado = lista_de_compras[deletar_item-1]
+            print(item_deletado," foi deletado")
             del lista_de_compras[deletar_item-1]
-            print(item_compra," foi deletado")
             time.sleep(2)
             continue
         if opcao_lista == "3":
@@ -125,6 +129,7 @@ try:
             time.sleep(3)
             os.system("cls") or None
 except:
+    ...
     print("Digite algo válido")
     time.sleep(2)
     os.system("cls") or None
