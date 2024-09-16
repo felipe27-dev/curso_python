@@ -24,29 +24,36 @@ contrário disso:
 
 O primeiro dígito do CPF é 7
 """
+import re 
+
 while True:
 #? Declaração de variáveis
-    cpf = input("Digite o CPF para verificá-lo: ")
+    cpf = re.sub(r"[^0-9,.,-]","",input("Digite o CPF para verificá-lo: "))
     lista_cpf = []
     multiplicador = 10
     lista_cpf_modificada = []
     
 #? Verificação de tamanho de CPF
     if len(cpf) < 11:
-        print("Digite um CPF válido")
+        print("Digite um CPF válido ")
         continue
     elif len(cpf) > 14:
-        print("Digite um CPF válido")
+        print("Digite um CPF válido e menor")
+        continue
+#? Verificação CPF repetido
+    if cpf == str(cpf[0]*len(cpf)) :    
+        print("Digite um CPF válido, sem repetições multíplas")
         continue
     else:
         break
-    
+
 #? Formatação do CPF
 for indice,item in enumerate(cpf): #tratamento de itens da lista
     if item == "." or item == "-":
         continue
+    
     lista_cpf.append(int(item))
-del lista_cpf[9:11] #limpagem de itens da lista
+del lista_cpf[9:11] #limpeza de itens da lista
 
 #?Verificação do Primeiro Digíto
 for indice,item in enumerate(lista_cpf):
@@ -88,3 +95,4 @@ if verificador_1 == int(cpf[-2]):
         print("O CPF digitado não é válido")
 else:
     print("O CPF digitado não é válido")
+
