@@ -9,3 +9,4 @@ falar_tchau = saudacao("Tchau")
 for nome in ["Fleipe","Rebeca","Carol"]:
     print(falar_oi(nome))
     print(falar_tchau(nome))
+
